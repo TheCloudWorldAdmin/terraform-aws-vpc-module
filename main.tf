@@ -5,13 +5,18 @@ terraform {
       version = "~> 4.0"
     }
   }
+  backend "s3" {
+    bucket = "wilshan-terraform-up-and-running-state"
+    key    = "terraform.tfstate"
+    region = "us-east-1"
+  }
 }
 
 # Configure the AWS Provider
 provider "aws" {
   region = "us-east-1"
-  access_key = "AKIA5676Z5XLRSQGX7G5"
-  secret_key = "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"
+  #access_key = "AKIA5676Z5XLRSQGX7G5"
+  #secret_key = "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"
 }
 
 resource "aws_vpc" "main" {
