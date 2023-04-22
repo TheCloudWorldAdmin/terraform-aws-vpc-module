@@ -17,7 +17,10 @@ provider "aws" {
   region = "us-east-1"
   #access_key = "AKIA5676Z5XLRSQGX7G5"
   #secret_key = "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"
-  assume_role = "arn:aws:iam::320040807668:role/terraform-cross-account-role"
+  assume_role {
+    # The role ARN within Account B to AssumeRole into. Created in step 1.
+    role_arn    = "arn:aws:iam::320040807668:role/terraform-cross-account-role"
+  }
 }
 
 resource "aws_vpc" "main" {
