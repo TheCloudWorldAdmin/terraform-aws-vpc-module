@@ -15,12 +15,8 @@ terraform {
 # Configure the AWS Provider
 provider "aws" {
   region = "us-east-1"
-  #access_key = "AKIA5676Z5XLRSQGX7G5"
-  #secret_key = "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"
-  assume_role {
-    # The role ARN within Account B to AssumeRole into. Created in step 1.
-    role_arn    = "arn:aws:iam::959922695639:role/terraform-assume-role"
-  }
+  access_key = "AKIA5676Z5XLRSQGX7G5"
+  secret_key = "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"
 }
 
 resource "aws_vpc" "main" {
