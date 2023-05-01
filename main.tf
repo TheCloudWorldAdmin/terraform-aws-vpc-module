@@ -15,10 +15,6 @@ terraform {
 # Configure the AWS Provider
 provider "aws" {
   region = "us-east-1"
-  assume_role {
-    # The role ARN within Account B to AssumeRole into. Created in step 1.
-    role_arn    = var.role_arn
-  }
 }
 
 variable "role_arn" {}
