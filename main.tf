@@ -15,9 +15,13 @@ terraform {
 # Configure the AWS Provider
 provider "aws" {
   region = "us-east-1"
+  assume_role {
+    role_arn     = var.assume_role
+    external_id  = "12345"
+  }
 }
 
-variable "role_arn" {}
+variable "assume_role" {}
 
 resource "aws_vpc" "main" {
   cidr_block       = "10.0.0.0/16"
