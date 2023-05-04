@@ -1,3 +1,28 @@
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 4.0"
+    }
+  }
+  backend "s3" {
+    bucket = "thecloudworld-terraform"
+    key    = "tfstate/terraform.tfstate"
+    region = "us-east-1"
+  }
+}
+
+# Configure the AWS Provider
+provider "aws" {
+  region = "us-east-1"
+  assume_role {
+    role_arn     = var.assume_role
+    external_id  = "12345"
+  }
+}
+
+variable "assume_role" {}
+
 resource "aws_vpc" "main" {
   cidr_block       = "10.0.0.0/16"
   instance_tenancy = "default"
